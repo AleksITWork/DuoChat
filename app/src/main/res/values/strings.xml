@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">DuoChat</string>
+
+    <string name="last_name_placeholder">Фамилия</string>
+    <string name="first_name_placeholder">Имя</string>
+    <string name="email_placeholder">Email-адрес</string>
+    <string name="password_placeholder">Пароль</string>
+
+    <string name="last_name_enter_placeholder">Введите фамилию</string>
+    <string name="first_name_enter_placeholder">Введите имя</string>
+    <string name="email_enter_placeholder">Введите email-адрес</string>
+    <string name="password_enter_placeholder">Введите пароль</string>
+
+    <string name="user_id_place">ID: %d</string>
+    <string name="user_email_place">Email-адрес: %s</string>
 </resources>
