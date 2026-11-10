@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -19,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.duochat.ui.theme.avatarSizeMedium
-import com.example.duochat.ui.theme.counterSize
 import com.example.duochat.ui.theme.radiusMedium
 import com.example.duochat.ui.theme.spacingExtraSmall
 import com.example.duochat.ui.theme.spacingMedium
@@ -58,7 +56,6 @@ fun UnifiedChatItem(
                 fullName,
                 uri,
                 avatarSizeMedium,
-                "Аватар $fullName"
             )
 
             Spacer(

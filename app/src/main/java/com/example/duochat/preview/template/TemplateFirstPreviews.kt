@@ -1,4 +1,4 @@
-package com.example.duochat.preview
+package com.example.duochat.preview.template
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
@@ -7,8 +7,10 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.example.duochat.model.navigation.getBottomMenuItemList
 import com.example.duochat.template.UnifiedAuthButton
 import com.example.duochat.template.UnifiedAvatar
+import com.example.duochat.template.UnifiedBottonMenu
 import com.example.duochat.template.UnifiedChatItem
 import com.example.duochat.template.UnifiedIconButton
 import com.example.duochat.template.UnifiedIconTextButton
@@ -20,7 +22,7 @@ import com.example.duochat.ui.theme.iconButtonSizeSmall
 
 @PreviewLightDark
 @Composable
-fun UnifiedNewChatTemplate() {
+fun UnifiedNewChatPreview() {
     DuoChatTheme {
         UnifiedNewChat(
             "Александр Ларин",
@@ -50,15 +52,14 @@ fun UnifiedAvatarPreview() {
         UnifiedAvatar(
             "Ларин Александр",
             null,
-            avatarSizeSmall,
-            ""
+            avatarSizeSmall
         )
     }
 }
 
 @PreviewLightDark
 @Composable
-fun UnifiedEmptyChatItemTemplate() {
+fun UnifiedEmptyChatItemPreview() {
     DuoChatTheme {
         UnifiedChatItem(
             null,
@@ -72,7 +73,21 @@ fun UnifiedEmptyChatItemTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedNotEmptyChatItemTemplate() {
+fun UnifiedBottomMenuPreview() {
+    val menuItems = getBottomMenuItemList()
+
+    DuoChatTheme {
+        UnifiedBottonMenu(
+            menuItems,
+            menuItems[0].route,
+            {}
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+fun UnifiedNotEmptyChatItemPreview() {
     DuoChatTheme {
         UnifiedChatItem(
             null,
@@ -126,7 +141,7 @@ fun UnifiedDisabledIconButtonPreview() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedIconTextButtonTemplate() {
+fun UnifiedIconTextButtonPreview() {
     DuoChatTheme {
         UnifiedIconTextButton(
             {},

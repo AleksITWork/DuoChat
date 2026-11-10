@@ -4,8 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import coil3.compose.AsyncImage
 import com.example.duochat.R
@@ -35,6 +34,7 @@ private fun String.toInitials(): String {
             val part = parts[0].take(1).uppercase()
             "$part."
         }
+
         else -> {
             val first = parts[0].take(1)
             val second = parts[1].take(1)
@@ -72,7 +72,6 @@ fun UnifiedAvatar(
     fullName: String,
     uri: String?,
     size: Dp,
-    contentDescription: String
 ) {
     val modifier = Modifier
         .size(size)
@@ -88,7 +87,10 @@ fun UnifiedAvatar(
             modifier = modifier,
             contentScale = ContentScale.Crop,
             model = uri,
-            contentDescription = contentDescription,
+            contentDescription = stringResource(
+                id = R.string.avatar_content_description,
+                fullName
+            ),
             error = painterResource(
                 id = R.drawable.ic_launcher_foreground
             ),

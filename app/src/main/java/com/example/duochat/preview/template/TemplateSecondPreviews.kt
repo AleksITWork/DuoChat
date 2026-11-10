@@ -1,29 +1,25 @@
-package com.example.duochat.preview
+package com.example.duochat.preview.template
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.example.duochat.model.template.MessageOwner
+import com.example.duochat.model.screen.MessageOwner
 import com.example.duochat.template.UnifiedMessage
 import com.example.duochat.template.UnifiedMessageCounter
-import com.example.duochat.template.UnifiedTextBox
 import com.example.duochat.template.UnifiedNavigationButton
 import com.example.duochat.template.UnifiedOutlinedTextField
 import com.example.duochat.template.UnifiedProfileCard
+import com.example.duochat.template.UnifiedTextBox
 import com.example.duochat.template.UnifiedUserFullNameText
 import com.example.duochat.ui.theme.DuoChatTheme
-import com.example.duochat.ui.theme.buttonHeight
-import com.example.duochat.ui.theme.radiusMedium
 
 @RequiresApi(Build.VERSION_CODES.O)
 @PreviewLightDark
 @Composable
-fun UnifiedYourMessageTemplate() {
+fun UnifiedYourMessagePreview() {
     DuoChatTheme {
         UnifiedMessage(
             "Привет! Как дела?",
@@ -36,7 +32,7 @@ fun UnifiedYourMessageTemplate() {
 @RequiresApi(Build.VERSION_CODES.O)
 @PreviewLightDark
 @Composable
-fun UnifiedOtherMessageTemplate() {
+fun UnifiedOtherMessagePreview() {
     DuoChatTheme {
         UnifiedMessage(
             "Привет! Как дела?",
@@ -48,7 +44,7 @@ fun UnifiedOtherMessageTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedMessageCounterTemplate() {
+fun UnifiedMessageCounterPreview() {
     DuoChatTheme {
         UnifiedMessageCounter(
             1
@@ -58,7 +54,7 @@ fun UnifiedMessageCounterTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedNavigationButtonTemplate() {
+fun UnifiedNavigationButtonPreview() {
     DuoChatTheme {
         UnifiedNavigationButton(
             {},
@@ -69,11 +65,11 @@ fun UnifiedNavigationButtonTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedOutlinedTextFieldTemplate() {
+fun UnifiedOutlinedTextFieldPreview() {
     DuoChatTheme {
         UnifiedOutlinedTextField(
             "Текст",
-            {value: String -> },
+            { value: String -> },
             "Имя",
             "Введите имя",
             Icons.Default.AccountBox,
@@ -83,7 +79,7 @@ fun UnifiedOutlinedTextFieldTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedProfileCardTemplate() {
+fun UnifiedProfileCardPreview() {
     DuoChatTheme {
         UnifiedProfileCard(
             "Александр Ларин",
@@ -96,15 +92,11 @@ fun UnifiedProfileCardTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedTextBoxTemplate() {
+fun UnifiedTextBoxPreview() {
     DuoChatTheme {
         UnifiedTextBox(
-            Modifier
-                .heightIn(
-                    min = buttonHeight
-                ),
             "",
-            {value: String ->},
+            { value: String -> },
             "Введите сообщение"
         )
     }
@@ -112,11 +104,9 @@ fun UnifiedTextBoxTemplate() {
 
 @PreviewLightDark
 @Composable
-fun UnifiedUserFullNameTextTemplate() {
+fun UnifiedUserFullNameTextPreview() {
     DuoChatTheme {
         UnifiedUserFullNameText(
-            Modifier,
-            radiusMedium,
             {},
             "Александр Ларин"
         )

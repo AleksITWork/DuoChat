@@ -20,7 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.duochat.model.template.MessageOwner
+import com.example.duochat.model.screen.MessageOwner
 import com.example.duochat.ui.theme.radiusLarge
 import com.example.duochat.ui.theme.radiusSmall
 import com.example.duochat.ui.theme.spacingExtraSmall

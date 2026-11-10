@@ -14,24 +14,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
+import com.example.duochat.ui.theme.radiusMedium
 import com.example.duochat.ui.theme.spacingLarge
 
 @Composable
 fun UnifiedUserFullNameText(
-    modifier: Modifier,
-    radius: Dp,
-    onClick: () -> Unit,
+    onClick: (() -> Unit)?,
     fullName: String,
 ) {
-    Card(
-        modifier = modifier
+    val modifier = if (onClick == null) {
+        Modifier
+            .fillMaxWidth()
+    } else {
+        Modifier
             .fillMaxWidth()
             .clickable {
                 onClick()
-            },
+            }
+    }
+
+    Card(
+        modifier = modifier,
         shape = RoundedCornerShape(
-            radius
+            radiusMedium
         ),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface

@@ -23,7 +23,6 @@ import com.example.duochat.ui.theme.radiusMedium
 import com.example.duochat.ui.theme.spacingExtraSmall
 import com.example.duochat.ui.theme.spacingLarge
 import com.example.duochat.ui.theme.spacingMedium
-import com.example.duochat.ui.theme.spacingSmall
 
 @Composable
 fun UnifiedProfileCard(
@@ -56,7 +55,6 @@ fun UnifiedProfileCard(
                 fullName,
                 uri,
                 avatarSizeLarge,
-                "Аватар профиля $fullName"
             )
 
             Spacer(

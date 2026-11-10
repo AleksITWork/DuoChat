@@ -1,6 +1,8 @@
 package com.example.duochat.template
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -11,16 +13,18 @@ import com.example.duochat.ui.theme.radiusLarge
 
 @Composable
 fun UnifiedTextBox(
-    modifier: Modifier,
     value: String,
     onValueChanged: (String) -> Unit,
     placeholder: String,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     maxLines: Int = 1
 ) {
     OutlinedTextField(
-        modifier = modifier,
+        modifier = Modifier
+            .fillMaxWidth(),
         value = value,
         onValueChange = onValueChanged,
+        keyboardOptions = keyboardOptions,
         placeholder = {
             Text(
                 text = placeholder,
