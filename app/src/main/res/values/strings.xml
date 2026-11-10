@@ -10,7 +10,28 @@
     <string name="first_name_enter_placeholder">Введите имя</string>
     <string name="email_enter_placeholder">Введите email-адрес</string>
     <string name="password_enter_placeholder">Введите пароль</string>
+    <string name="message_enter_placeholder">Введите сообщение</string>
+    <string name="user_enter_placeholder">Введите ID пользователя</string>
 
     <string name="user_id_place">ID: %d</string>
     <string name="user_email_place">Email-адрес: %s</string>
+
+    <string name="login_main_text_button">Войти</string>
+    <string name="register_main_text_button">Зарегистрироваться</string>
+
+    <string name="login_second_text_button">Авторизация</string>
+    <string name="register_second_text_button">Регистрация</string>
+
+    <string name="chats_bottom_menu">Чаты</string>
+    <string name="add_user_bottom_menu">Новый чат</string>
+    <string name="profile_bottom_menu">Профиль</string>
+
+    <string name="search_button_content_description">Кнопка поиска</string>
+    <string name="back_button_content_description">Кнопка назад</string>
+    <string name="send_button_content_description">Кнопка отправки</string>
+    <string name="avatar_content_description">Аватар %s</string>
+
+    <string name="edit_profile_button_text">Редактировать профиль</string>
+    <string name="exit_account_button_text">Выйти из аккаунта</string>
+    <string name="apply_edit_profile_button_text">Изменить данные</string>
 </resources>
