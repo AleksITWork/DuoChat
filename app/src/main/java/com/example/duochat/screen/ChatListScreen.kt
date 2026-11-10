@@ -39,7 +39,6 @@ import com.example.duochat.ui.theme.spacingSmall
 fun ChatListScreen(
     users: List<UserItem>,
     chats: List<ChatItem>,
-    onItemSelected: () -> Unit,
     onSearch: () -> Unit,
     onOpenChat: () -> Unit
 ) {
@@ -48,95 +47,83 @@ fun ChatListScreen(
         id = R.string.search_button_content_description
     )
 
-    Scaffold(
+    Column(
         modifier = Modifier
-            .fillMaxSize(),
-        bottomBar = {
-            UnifiedBottonMenu(
-                bottomMenuItems = bottomMenuItems,
-                selectedRoute = bottomMenuItems[0].route,
-                onItemSelected = {
-                    onItemSelected()
-                }
-            )
-        }
-    ) { innerPadding ->
-        Column(
+            .fillMaxSize()
+            .padding(
+                spacingMedium
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
+    ) {
+        Card(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+                .fillMaxWidth()
+                .padding(
+                    spacingMedium
+                ),
+            shape = RoundedCornerShape(
+                radiusMedium
+            ),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer
+            )
         ) {
-            Card(
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        spacingMedium
+                        spacingSmall
                     ),
-                shape = RoundedCornerShape(
-                    radiusMedium
-                ),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                UnifiedLogo()
+
+                UnifiedIconButton(
+                    onClick = {
+                        onSearch()
+                    },
+                    buttonSize = iconButtonSizeMedium,
+                    imageVector = Icons.Default.Search,
+                    contentDescription = searchButtonContentDescription
                 )
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            spacingSmall
-                        ),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    UnifiedLogo()
-
-                    UnifiedIconButton(
-                        onClick = {
-                            onSearch()
-                        },
-                        buttonSize = iconButtonSizeMedium,
-                        imageVector = Icons.Default.Search,
-                        contentDescription = searchButtonContentDescription
-                    )
-                }
             }
+        }
 
-            Spacer(
-                modifier = Modifier
-                    .height(
-                        spacingMedium
+        Spacer(
+            modifier = Modifier
+                .height(
+                    spacingMedium
+                )
+        )
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            items(
+                chats
+            ) { chat ->
+                val user = users.firstOrNull { user ->
+                    user.id == chat.other
+                }
+
+                if (user != null) {
+                    UnifiedChatItem(
+                        uri = user.uri,
+                        fullName = getFullName(
+                            lastName = user.lastName,
+                            firstName = user.firstName
+                        ),
+                        lastMessageText = chat.messages.reversed().last().text,
+                        countNewMessages = chat.messages.count { message ->
+                            !message.read
+                        },
+                        onClick = {
+                            onOpenChat()
+                        }
                     )
-            )
-
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                items(
-                    chats
-                ) { chat ->
-                    val user = users.firstOrNull { user ->
-                        user.id == chat.other
-                    }
-
-                    if (user != null) {
-                        UnifiedChatItem(
-                            uri = user.uri,
-                            fullName = getFullName(
-                                lastName = user.lastName,
-                                firstName = user.firstName
-                            ),
-                            lastMessageText = chat.messages.last().text,
-                            countNewMessages = chat.messages.count { message ->
-                                !message.read
-                            },
-                            onClick = {
-                                onOpenChat()
-                            }
-                        )
-                    }
                 }
             }
         }

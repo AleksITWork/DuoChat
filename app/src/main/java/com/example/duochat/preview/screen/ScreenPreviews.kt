@@ -60,7 +60,6 @@ fun ChatListScreenPreview() {
             getUserItemList(),
             getChatItemList(),
             {},
-            {},
             {}
         )
     }
@@ -117,7 +116,6 @@ fun ProfileScreenPreview() {
     DuoChatTheme {
         ProfileScreen(
             user,
-            {},
             {},
             {}
         )

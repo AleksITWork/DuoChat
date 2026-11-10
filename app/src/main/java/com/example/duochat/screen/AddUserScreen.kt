@@ -36,65 +36,57 @@ fun AddUserScreen(
         id = R.string.user_enter_placeholder
     )
 
-    Scaffold(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-    ) { innerPadding ->
-        Column(
+            .padding(
+                spacingMedium
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    paddingValues = innerPadding
-                )
-                .padding(
-                    spacingMedium
-                ),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
+            UnifiedBackButton(
+                onBack = onBack
+            )
+
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                    .weight(1f)
             ) {
-                UnifiedBackButton(
-                    onBack = onBack
+                UnifiedTextBox(
+                    value = text,
+                    onValueChanged = onTextChanged,
+                    placeholder = userTextPlaceholder,
+                    maxLines = 1,
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number
+                    )
                 )
-
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    UnifiedTextBox(
-                        value = text,
-                        onValueChanged = onTextChanged,
-                        placeholder = userTextPlaceholder,
-                        maxLines = 1,
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Number
-                        )
-                    )
-                }
             }
+        }
 
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                items(users) { user ->
-                    UnifiedNewChat(
-                        fullName = getFullName(
-                            lastName = user.lastName,
-                            firstName = user.firstName
-                        ),
-                        uri = user.uri,
-                        userId = user.id,
-                        onClick = {
-                            onOpenChat()
-                        }
-                    )
-                }
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            items(users) { user ->
+                UnifiedNewChat(
+                    fullName = getFullName(
+                        lastName = user.lastName,
+                        firstName = user.firstName
+                    ),
+                    uri = user.uri,
+                    userId = user.id,
+                    onClick = {
+                        onOpenChat()
+                    }
+                )
             }
         }
     }

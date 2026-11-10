@@ -39,6 +39,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:1.7.8")
     implementation("io.coil-kt.coil3:coil-compose:3.4.0")
     implementation("io.coil-kt.coil3:coil-network-ktor3:3.4.0")
+    implementation ("androidx.navigation:navigation-compose:2.9.8")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

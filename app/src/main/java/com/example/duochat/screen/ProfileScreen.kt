@@ -21,13 +21,13 @@ import com.example.duochat.model.screen.getFullName
 import com.example.duochat.template.UnifiedBottonMenu
 import com.example.duochat.template.UnifiedIconTextButton
 import com.example.duochat.template.UnifiedProfileCard
+import com.example.duochat.ui.theme.spacingMedium
 
 @Composable
 fun ProfileScreen(
     user: UserItem,
     onEditProfile: () -> Unit,
-    onExit: () -> Unit,
-    onItemSelected: () -> Unit
+    onExit: () -> Unit
 ) {
     val bottomMenuItems = getBottomMenuItemList()
 
@@ -38,62 +38,48 @@ fun ProfileScreen(
         id = R.string.exit_account_button_text
     )
 
-    Scaffold(
+    Column(
         modifier = Modifier
-            .fillMaxSize(),
-        bottomBar = {
-            UnifiedBottonMenu(
-                bottomMenuItems = bottomMenuItems,
-                selectedRoute = bottomMenuItems[0].route,
-                onItemSelected = {
-                    onItemSelected()
-                }
-            )
-        }
-    ) { innerPadding ->
+            .fillMaxSize()
+            .padding(
+                spacingMedium
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceAround
+    ) {
+        UnifiedProfileCard(
+            fullName = getFullName(
+                lastName = user.lastName,
+                firstName = user.firstName
+            ),
+            uri = user.uri,
+            userId = user.id,
+            email = user.email
+        )
+
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    paddingValues = innerPadding
-                ),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceAround
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            UnifiedProfileCard(
-                fullName = getFullName(
-                    lastName = user.lastName,
-                    firstName = user.firstName
-                ),
-                uri = user.uri,
-                userId = user.id,
-                email = user.email
+            UnifiedIconTextButton(
+                onClick = {
+                    onEditProfile()
+                },
+                contentColor = MaterialTheme.colorScheme.primary,
+                imageVector = Icons.Default.Create,
+                buttonText = editProfileButtonText
             )
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                UnifiedIconTextButton(
-                    onClick = {
-                        onEditProfile()
-                    },
-                    contentColor = MaterialTheme.colorScheme.primary,
-                    imageVector = Icons.Default.Create,
-                    buttonText = editProfileButtonText
-                )
-
-                UnifiedIconTextButton(
-                    onClick = {
-                        onExit()
-                    },
-                    contentColor = MaterialTheme.colorScheme.error,
-                    imageVector = Icons.AutoMirrored.Filled.ExitToApp,
-                    buttonText = exitAccountButtonText
-                )
-            }
+            UnifiedIconTextButton(
+                onClick = {
+                    onExit()
+                },
+                contentColor = MaterialTheme.colorScheme.error,
+                imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                buttonText = exitAccountButtonText
+            )
         }
     }
 }
